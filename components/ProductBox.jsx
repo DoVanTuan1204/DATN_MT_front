@@ -1,7 +1,9 @@
+import { useRouter } from "next/router";
 import React from "react";
 import styled from "styled-components";
 
 const ProductWrapper = styled.div`
+  cursor: pointer;
   &:hover {
     border-radius: 0 0 9px 9px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -29,9 +31,14 @@ const Title = styled.h2`
     font-weight: 600;
   }
 `;
+
 const ProductBox = ({ id, name, title, description, images }) => {
+  const router = useRouter();
+  const productPage = (id) => {
+    router.push("/product/" + id);
+  };
   return (
-    <ProductWrapper>
+    <ProductWrapper onClick={() => productPage(id)}>
       <WhiteBox>
         <img src={images} />
       </WhiteBox>
