@@ -1,6 +1,7 @@
 import { useRouter } from "next/router";
 import React from "react";
 import styled from "styled-components";
+import { formatPrice } from "@/src/util/helpers";
 
 const ProductWrapper = styled.div`
   cursor: pointer;
@@ -40,11 +41,11 @@ const ProductBox = ({ id, name, title, description, images }) => {
   return (
     <ProductWrapper onClick={() => productPage(id)}>
       <WhiteBox>
-        <img src={images} />
+        <img src={"/images/buoi_5_roi.jpg"} />
       </WhiteBox>
       <Title>
-        {name}
-        <span>Liên hệ</span>
+        {product.ten}
+        <span>{formatPrice(product.giatien)} đ</span>
       </Title>
     </ProductWrapper>
   );

@@ -1,9 +1,10 @@
-import React from "react";
-import Center from "./Center";
-import { fakeData } from "@/fakeData";
-import ProductBox from "./ProductBox";
-import styled from "styled-components";
-import Recommend from "./Recommend";
+import React, { useEffect, useState } from 'react'
+import Center from './Center'
+import { fakeData } from '@/fakeData'
+import ProductBox from './ProductBox'
+import styled from 'styled-components'
+import Recommend from './Recommend'
+import ProductAPI from '@/src/api/product'
 const GridWrapper = styled.div`
   background-color: white;
   margin-top: 20px;
@@ -11,17 +12,17 @@ const GridWrapper = styled.div`
   padding-bottom: 20px;
   display: grid;
   grid-template-columns: 0.4fr 1.6fr;
-`;
+`
 
 const ProductGrid = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   gap: 20px;
   padding-top: 20px;
-`;
+`
 const TitleWholeSale = styled.span`
   font-size: 30px;
-`;
+`
 const SortBar = styled.div`
   display: flex;
   gap: 20px;
@@ -35,8 +36,19 @@ const SortBar = styled.div`
       color: #ffd408;
     }
   }
-`;
+`
 const NewProduct = () => {
+  const [listProduct, setListProduct] = useState([])
+
+  const fetchListProduct = async () => {
+    const data = await ProductAPI.getListProduct()
+    setListProduct(data.data.results)
+  }
+
+  useEffect(() => {
+    fetchListProduct()
+  }, [])
+
   return (
     <GridWrapper>
       <Recommend />
@@ -50,14 +62,14 @@ const NewProduct = () => {
           <span>Hàng mới</span>
         </SortBar>
         <ProductGrid>
-          {fakeData?.length > 0 &&
-            fakeData.map((product, index) => (
-              <ProductBox key={index} {...product} />
+          {listProduct?.length > 0 &&
+            listProduct.map((product, index) => (
+              <ProductBox key={index} product={product} />
             ))}
         </ProductGrid>
       </Center>
     </GridWrapper>
-  );
-};
+  )
+}
 
-export default NewProduct;
+export default NewProduct
