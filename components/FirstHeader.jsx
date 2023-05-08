@@ -1,24 +1,25 @@
-import React from "react";
-import styled from "styled-components";
-import Center from "./Center";
-import Link from "next/link";
-import IconPhone from "./icon/IconPhone";
-import IconUser from "./icon/IconUser";
-import { BaseOrange } from "@/public/Color";
+import React from 'react'
+import styled from 'styled-components'
+import Center from './Center'
+import Link from 'next/link'
+import IconPhone from './icon/IconPhone'
+import IconUser from './icon/IconUser'
+import { BaseOrange } from '@/public/Color'
+import Router from 'next/router'
 
 const StyledHeader = styled.header`
   background-color: #fff;
   padding: 10px 0;
-`;
+`
 const Logo = styled(Link)`
   color: black;
   text-decoration: none;
-`;
+`
 const FirstNav = styled.nav`
   display: flex;
   justify-content: space-between;
   align-items: center;
-`;
+`
 const CartWrapper = styled.div`
   display: flex;
   gap: 5px;
@@ -27,13 +28,13 @@ const CartWrapper = styled.div`
   border-radius: 10px;
   color: ${BaseOrange};
   cursor: pointer;
-`;
+`
 const FirstHeader = () => {
   return (
     <StyledHeader>
       <Center>
         <FirstNav className="flex flex-row">
-          <Logo href={"/"}>Langbiang</Logo>
+          <Logo href={'/'}>Langbiang</Logo>
           <input
             className="bg-gray-200 px-5 py-2 rounded-full w-1/3"
             placeholder="Tìm kiếm sản phẩm"
@@ -52,8 +53,8 @@ const FirstHeader = () => {
               <IconUser />
             </div>
             <div className="flex flex-col">
-              <p>Đăng nhập</p>
-              <p>Đăng ký</p>
+              <button onClick={() => Router.push('/login')}>Đăng nhập</button>
+              <button>Đăng ký</button>
             </div>
           </div>
           <CartWrapper>
@@ -63,7 +64,7 @@ const FirstHeader = () => {
         </FirstNav>
       </Center>
     </StyledHeader>
-  );
-};
+  )
+}
 
-export default FirstHeader;
+export default FirstHeader
