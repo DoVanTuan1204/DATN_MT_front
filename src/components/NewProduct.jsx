@@ -5,6 +5,7 @@ import ProductBox from './ProductBox'
 import styled from 'styled-components'
 import Recommend from './Recommend'
 import ProductAPI from '@/src/api/product'
+
 const GridWrapper = styled.div`
   background-color: white;
   margin-top: 20px;
@@ -20,9 +21,11 @@ const ProductGrid = styled.div`
   gap: 20px;
   padding-top: 20px;
 `
+
 const TitleWholeSale = styled.span`
   font-size: 30px;
 `
+
 const SortBar = styled.div`
   display: flex;
   gap: 20px;
@@ -37,6 +40,7 @@ const SortBar = styled.div`
     }
   }
 `
+
 const NewProduct = () => {
   const [listProduct, setListProduct] = useState([])
 

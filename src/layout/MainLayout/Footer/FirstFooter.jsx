@@ -1,11 +1,11 @@
-import React from "react";
-import Center from "./Center";
-import styled from "styled-components";
+import React from 'react'
+import Center from '../../../components/Center'
+import styled from 'styled-components'
 
 const StyledFooter = styled.header`
   background-color: #f7f7f7;
   margin-top: 20px;
-`;
+`
 const WrapperFirstFooter = styled.div`
   padding: 30px 0;
   width: 100%;
@@ -16,7 +16,7 @@ const WrapperFirstFooter = styled.div`
     font-size: 25px;
     font-weight: 400;
   }
-`;
+`
 const RegisterEmail = styled.div`
   display: flex;
   input {
@@ -31,7 +31,7 @@ const RegisterEmail = styled.div`
     padding: 0 8px;
     border-radius: 0 10px 10px 0;
   }
-`;
+`
 const FirstFooter = () => {
   return (
     <StyledFooter>
@@ -45,7 +45,7 @@ const FirstFooter = () => {
         </WrapperFirstFooter>
       </Center>
     </StyledFooter>
-  );
-};
+  )
+}
 
-export default FirstFooter;
+export default FirstFooter

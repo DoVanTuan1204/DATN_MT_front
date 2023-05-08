@@ -1,25 +1,19 @@
-import Center from "@/components/Center";
-import FirstFooter from "@/components/FirstFooter";
-import FirstHeader from "@/components/FirstHeader";
-import NewProduct from "@/components/NewProduct";
-import SecondFooter from "@/components/SecondFooter";
-import SecondHeader from "@/components/SecondHeader";
-import React from "react";
+import Center from '@/src/components/Center'
+import NewProduct from '@/src/components/NewProduct'
+import MainLayout from '@/src/layout/MainLayout'
 
-const freshProducts = () => {
+const FreshProducts = () => {
   return (
-    <div>
-      <FirstHeader />
-      <SecondHeader />
-      <Center>
-        <div className="mt-10">
-          <NewProduct />
-        </div>
-      </Center>
-      <FirstFooter />
-      <SecondFooter />
-    </div>
-  );
-};
+    <Center>
+      <div className="mt-10">
+        <NewProduct />
+      </div>
+    </Center>
+  )
+}
 
-export default freshProducts;
+FreshProducts.getLayout = function getLayout(page) {
+  return <MainLayout>{page}</MainLayout>
+}
+
+export default FreshProducts

@@ -1,25 +1,29 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
-import Center from './Center'
+import Center from '../../../components/Center'
 import Link from 'next/link'
-import IconPhone from './icon/IconPhone'
-import IconUser from './icon/IconUser'
+import IconPhone from '../../../components/icon/IconPhone'
+import IconUser from '../../../components/icon/IconUser'
 import { BaseOrange } from '@/public/Color'
 import Router from 'next/router'
+import StorageUtil, { STORAGE_KEY } from '@/src/util/storage'
 
 const StyledHeader = styled.header`
   background-color: #fff;
   padding: 10px 0;
 `
+
 const Logo = styled(Link)`
   color: black;
   text-decoration: none;
 `
+
 const FirstNav = styled.nav`
   display: flex;
   justify-content: space-between;
   align-items: center;
 `
+
 const CartWrapper = styled.div`
   display: flex;
   gap: 5px;
@@ -29,6 +33,7 @@ const CartWrapper = styled.div`
   color: ${BaseOrange};
   cursor: pointer;
 `
+
 const FirstHeader = () => {
   return (
     <StyledHeader>

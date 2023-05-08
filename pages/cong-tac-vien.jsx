@@ -1,7 +1,12 @@
-import React from "react";
+import MainLayout from '@/src/layout/MainLayout'
+import React from 'react'
 
-const collaborators = () => {
-  return <div>collaborators</div>;
-};
+const Collaborators = () => {
+  return <div>Collaborators</div>
+}
 
-export default collaborators;
+Collaborators.getLayout = function getLayout(page) {
+  return <MainLayout>{page}</MainLayout>
+}
+
+export default Collaborators

@@ -1,20 +1,12 @@
-import Center from "@/components/Center";
-import FirstFooter from "@/components/FirstFooter";
-import FirstHeader from "@/components/FirstHeader";
-import SecondFooter from "@/components/SecondFooter";
-import SecondHeader from "@/components/SecondHeader";
-import React from "react";
+import Center from '@/src/components/Center'
+import MainLayout from '@/src/layout/MainLayout'
 
 const ProductPage = () => {
-  return (
-    <div>
-      <FirstHeader />
-      <SecondHeader />
-      <Center></Center>
-      <FirstFooter />
-      <SecondFooter />
-    </div>
-  );
-};
+  return <Center></Center>
+}
 
-export default ProductPage;
+ProductPage.getLayout = function getLayout(page) {
+  return <MainLayout>{page}</MainLayout>
+}
+
+export default ProductPage
