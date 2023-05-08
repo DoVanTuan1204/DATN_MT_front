@@ -1,13 +1,17 @@
-import Center from '@/src/components/Center'
-import MainLayout from '@/src/layout/MainLayout'
-import StorageUtil, { STORAGE_KEY } from '@/src/util/storage'
-import React from 'react'
+import Center from "@/src/components/Center";
+import MainLayout from "@/src/layout/MainLayout";
+import StorageUtil, { STORAGE_KEY } from "@/src/util/storage";
+import React, { useEffect, useState } from "react";
 
 const Cart = () => {
-  const data = StorageUtil.get(STORAGE_KEY.RECENT_CART)
+  const [data, setData] = useState();
+  useEffect(() => {
+    setData(StorageUtil.get(STORAGE_KEY.RECENT_CART));
+  }, []);
+
   return (
     <Center>
-      {data.map((item) => (
+      {data?.map((item) => (
         <div key={item.id}>
           <div>ten: {item.ten}</div>
           <div>so luong: {item.amount}</div>
@@ -16,11 +20,11 @@ const Cart = () => {
         </div>
       ))}
     </Center>
-  )
-}
+  );
+};
 
 Cart.getLayout = function getLayout(page) {
-  return <MainLayout>{page}</MainLayout>
-}
+  return <MainLayout>{page}</MainLayout>;
+};
 
-export default Cart
+export default Cart;
