@@ -12,7 +12,9 @@ const freshProducts = () => {
       <FirstHeader />
       <SecondHeader />
       <Center>
-        <NewProduct />
+        <div className="mt-10">
+          <NewProduct />
+        </div>
       </Center>
       <FirstFooter />
       <SecondFooter />

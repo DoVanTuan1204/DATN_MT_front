@@ -1,13 +1,15 @@
-import { formatPrice } from '@/src/util/helpers'
-import React from 'react'
-import styled from 'styled-components'
+import { useRouter } from "next/router";
+import React from "react";
+import styled from "styled-components";
+import { formatPrice } from "@/src/util/helpers";
 
 const ProductWrapper = styled.div`
+  cursor: pointer;
   &:hover {
     border-radius: 0 0 9px 9px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   }
-`
+`;
 
 const WhiteBox = styled.div`
   background-color: white;
@@ -18,7 +20,7 @@ const WhiteBox = styled.div`
     width: 100%;
     max-height: 250px;
   }
-`
+`;
 const Title = styled.h2`
   font-weight: 400;
   font-size: 20px;
@@ -29,19 +31,24 @@ const Title = styled.h2`
     color: red;
     font-weight: 600;
   }
-`
-const ProductBox = ({ product }) => {
+`;
+
+const ProductBox = ({ id, name, title, description, images }) => {
+  const router = useRouter();
+  const productPage = (id) => {
+    router.push("/product/" + id);
+  };
   return (
-    <ProductWrapper>
+    <ProductWrapper onClick={() => productPage(id)}>
       <WhiteBox>
-        <img src={'/images/buoi_5_roi.jpg'} />
+        <img src={"/images/buoi_5_roi.jpg"} />
       </WhiteBox>
       <Title>
         {product.ten}
         <span>{formatPrice(product.giatien)} đ</span>
       </Title>
     </ProductWrapper>
-  )
-}
+  );
+};
 
-export default ProductBox
+export default ProductBox;
