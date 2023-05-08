@@ -1,7 +1,12 @@
-import React from "react";
+import MainLayout from '@/src/layout/MainLayout'
+import React from 'react'
 
-const introduce = () => {
-  return <div>introduce</div>;
-};
+const Introduce = () => {
+  return <div>Introduce</div>
+}
 
-export default introduce;
+Introduce.getLayout = function getLayout(page) {
+  return <MainLayout>{page}</MainLayout>
+}
+
+export default Introduce

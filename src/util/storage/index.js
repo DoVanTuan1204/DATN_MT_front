@@ -1,5 +1,6 @@
 export const STORAGE_KEY = {
   JWT: 'JWT',
+  RECENT_CART: 'RECENT_CART',
 }
 
 export default class StorageUtil {
