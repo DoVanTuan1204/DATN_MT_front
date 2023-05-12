@@ -71,8 +71,8 @@ const ProductBox = ({ product }) => {
   return (
     <ProductWrapper
       onClick={() => {
-        // productPage(product.id)
-        addToCart(product)
+        productPage(product.id)
+        // addToCart(product)
       }}
     >
       <WhiteBox>
