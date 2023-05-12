@@ -1,11 +1,11 @@
-import Center from '@/src/components/Center'
-import MainLayout from '@/src/layout/MainLayout'
-import styled from 'styled-components'
+import Center from "@/src/components/Center";
+import MainLayout from "@/src/layout/MainLayout";
+import styled from "styled-components";
 
 const Wrapper = styled.div`
   display: flex;
   justify-content: center;
-`
+`;
 const Coupon = styled.div`
   display: flex;
   flex-direction: column;
@@ -14,16 +14,16 @@ const Coupon = styled.div`
   border: 0.1px solid #f0f0f0;
   border-radius: 5px;
   margin: 5px;
-`
+`;
 const HeaderCoupon = styled.div`
   display: flex;
   justify-content: space-between;
   border-bottom: 1px solid #f0f0f0;
   padding: 20px;
-`
+`;
 const BodyCoupon = styled.div`
   padding: 40px 10px;
-`
+`;
 const UpdateProduct = styled.div`
   border: 8px solid #ffc700;
   border-radius: 8px;
@@ -35,7 +35,7 @@ const UpdateProduct = styled.div`
     padding: 10px;
     border-radius: 8px;
   }
-`
+`;
 
 const SaleOff = () => {
   return (
@@ -69,11 +69,11 @@ const SaleOff = () => {
         <p>Sản phẩm đang được cập nhật.</p>
       </UpdateProduct>
     </Center>
-  )
-}
+  );
+};
 
 SaleOff.getLayout = function getLayout(page) {
-  return <MainLayout>{page}</MainLayout>
-}
+  return <MainLayout>{page}</MainLayout>;
+};
 
-export default SaleOff
+export default SaleOff;

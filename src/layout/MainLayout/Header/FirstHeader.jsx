@@ -1,28 +1,29 @@
-import React, { useEffect, useState } from 'react'
-import styled from 'styled-components'
-import Center from '../../../components/Center'
-import Link from 'next/link'
-import IconPhone from '../../../components/icon/IconPhone'
-import IconUser from '../../../components/icon/IconUser'
-import { BaseOrange } from '@/public/Color'
-import Router from 'next/router'
-import StorageUtil, { STORAGE_KEY } from '@/src/util/storage'
+import React, { useContext, useEffect, useState } from "react";
+import styled from "styled-components";
+import Center from "../../../components/Center";
+import Link from "next/link";
+import IconPhone from "../../../components/icon/IconPhone";
+import IconUser from "../../../components/icon/IconUser";
+import { BaseOrange } from "@/public/Color";
+import Router, { useRouter } from "next/router";
+import StorageUtil, { STORAGE_KEY } from "@/src/util/storage";
+import { CartContext } from "@/src/components/CartContext";
 
 const StyledHeader = styled.header`
   background-color: #fff;
   padding: 10px 0;
-`
+`;
 
 const Logo = styled(Link)`
   color: black;
   text-decoration: none;
-`
+`;
 
 const FirstNav = styled.nav`
   display: flex;
   justify-content: space-between;
   align-items: center;
-`
+`;
 
 const CartWrapper = styled.div`
   display: flex;
@@ -32,14 +33,17 @@ const CartWrapper = styled.div`
   border-radius: 10px;
   color: ${BaseOrange};
   cursor: pointer;
-`
+`;
 
 const FirstHeader = () => {
+  const router = useRouter();
+  const { cartProduct } = useContext(CartContext);
+  console.log({ cartProduct });
   return (
     <StyledHeader>
       <Center>
         <FirstNav className="flex flex-row">
-          <Logo href={'/'}>Langbiang</Logo>
+          <Logo href={"/"}>Langbiang</Logo>
           <input
             className="bg-gray-200 px-5 py-2 rounded-full w-1/3"
             placeholder="Tìm kiếm sản phẩm"
@@ -58,18 +62,21 @@ const FirstHeader = () => {
               <IconUser />
             </div>
             <div className="flex flex-col">
-              <button onClick={() => Router.push('/login')}>Đăng nhập</button>
+              <button onClick={() => Router.push("/login")}>Đăng nhập</button>
               <button>Đăng ký</button>
             </div>
           </div>
-          <CartWrapper>
+          <CartWrapper
+            onClick={() => {
+              router.push("/cart");
+            }}>
             <p>Giỏ hàng</p>
-            <p>0</p>
+            <p>{cartProduct.length}</p>
           </CartWrapper>
         </FirstNav>
       </Center>
     </StyledHeader>
-  )
-}
+  );
+};
 
-export default FirstHeader
+export default FirstHeader;
