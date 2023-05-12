@@ -1,6 +1,6 @@
-import { CartContextProvider } from '@/src/components/CartContext'
-import '@/styles/globals.css'
-import { createGlobalStyle } from 'styled-components'
+import { CartContextProvider } from "@/src/components/CartContext";
+import "@/styles/globals.css";
+import { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
 body{
@@ -8,10 +8,10 @@ body{
   padding: 0;
   margin: 0;
  font-family: 'Be Vietnam Pro', sans-serif;;
-}`
+}`;
 
 export default function App({ Component, pageProps }) {
-  const getLayout = Component.getLayout || ((page) => page)
+  const getLayout = Component.getLayout || ((page) => page);
 
   return (
     <>
@@ -20,5 +20,5 @@ export default function App({ Component, pageProps }) {
         {getLayout(<Component {...pageProps} />)}
       </CartContextProvider>
     </>
-  )
+  );
 }

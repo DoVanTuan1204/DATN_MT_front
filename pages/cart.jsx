@@ -6,6 +6,7 @@ import Input from "@/src/components/Input";
 import Table from "@/src/components/Table";
 import MainLayout from "@/src/layout/MainLayout";
 import { formatPrice } from "@/src/util/helpers";
+import { useRouter } from "next/router";
 import React, { useContext, useEffect, useState } from "react";
 import styled from "styled-components";
 
@@ -53,7 +54,7 @@ const PaymentButton = styled.button`
 const Cart = () => {
   const { cartProduct, addProduct, removeProduct } = useContext(CartContext);
   const [products, setProducts] = useState([]);
-
+  const router = useRouter();
   const unique = (arr) => {
     return Array.from(new Set(arr));
   };
@@ -85,6 +86,9 @@ const Cart = () => {
     const price = products.find((p) => p.id === productID)?.giatien || 0;
     total += price;
   }
+  const PaymentSuccess = () => {
+    router.push("/thanh-toan-thanh-cong");
+  };
   return (
     <div>
       <Center>
@@ -153,7 +157,9 @@ const Cart = () => {
             <Input type="text" placeholder="Phường/Xã" />
             <Input type="text" placeholder="Thành phố" />
             <Input type="text" placeholder="Tỉnh" />
-            <PaymentButton>Thanh toán</PaymentButton>
+            <PaymentButton onClick={() => PaymentSuccess()}>
+              Thanh toán
+            </PaymentButton>
           </Box>
         </WrapperOrders>
       </Center>
