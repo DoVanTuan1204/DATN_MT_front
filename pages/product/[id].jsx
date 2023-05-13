@@ -88,8 +88,6 @@ const ProductPage = () => {
     fetchDetailProduct();
   }, []);
 
-
-
   return (
     <Center>
       <WrapperDetail>
@@ -114,8 +112,6 @@ const ProductPage = () => {
               </span>
             </div>
             <Coupon />
-            <span>Số lượng :</span>
-          
             <button
               onClick={addTocard}
               className="bg-[#fd7e14] p-3 text-white rounded-lg">

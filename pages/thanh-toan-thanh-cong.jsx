@@ -1,18 +1,22 @@
+import { CartContext } from "@/src/components/CartContext";
 import IconSuccess from "@/src/components/icon/IconSuccess";
 import { useRouter } from "next/router";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 
 const PaymentSuccess = () => {
   const router = useRouter();
   const [counter, setCounter] = useState(5);
+  const { clearCart } = useContext(CartContext);
   useEffect(() => {
     counter > 0 && setTimeout(() => setCounter(counter - 1), 1000);
     if (counter === 0) {
       router.push("/");
+      clearCart();
     }
   }, [counter]);
   const backToFirstPage = () => {
     router.push("/");
+    clearCart();
   };
 
   return (
