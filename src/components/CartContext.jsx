@@ -27,9 +27,19 @@ export function CartContextProvider({ children }) {
       return prev;
     });
   };
+  function clearCart() {
+    setCartProduct([]);
+    localStorage.removeItem("cart");
+  }
   return (
     <CartContext.Provider
-      value={{ cartProduct, setCartProduct, removeProduct, addProduct }}>
+      value={{
+        cartProduct,
+        setCartProduct,
+        removeProduct,
+        addProduct,
+        clearCart,
+      }}>
       {children}
     </CartContext.Provider>
   );
