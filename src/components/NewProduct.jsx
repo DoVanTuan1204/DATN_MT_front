@@ -4,6 +4,7 @@ import ProductBox from "./ProductBox";
 import styled from "styled-components";
 import Recommend from "./Recommend";
 import ProductAPI from "@/src/api/product";
+import ReactPaginate from "react-paginate";
 
 const GridWrapper = styled.div`
   background-color: white;
@@ -21,10 +22,6 @@ const ProductGrid = styled.div`
   padding-top: 20px;
 `;
 
-const TitleWholeSale = styled.span`
-  font-size: 30px;
-`;
-
 const SortBar = styled.div`
   display: flex;
   gap: 20px;
@@ -39,38 +36,63 @@ const SortBar = styled.div`
     }
   }
 `;
-
+const Border = styled.div`
+  border-left: 1px solid gray;
+`;
 const NewProduct = () => {
   const [listProduct, setListProduct] = useState([]);
+  const [pageCount, setPageCount] = useState(0);
+  const [paging, setPaging] = useState();
 
   const fetchListProduct = async () => {
-    const data = await ProductAPI.getListProduct();
+    const data = await ProductAPI.getListProduct({ page: paging });
     setListProduct(data.data.results);
+    setPageCount(Math.ceil(data.data.count / 10));
   };
 
   useEffect(() => {
     fetchListProduct();
-  }, []);
+  }, [paging]);
 
+  const handleChangePage = async (data) => {
+    let page = data.selected + 1;
+    setPaging(page);
+  };
   return (
     <GridWrapper>
       <Recommend />
-      <Center>
-        <TitleWholeSale>Sỉ Rau, Củ, Quả tươi</TitleWholeSale>
-        <SortBar>
-          Sắp xếp :<span>Tên A &rarr; Z</span>
-          <span>Tên Z &rarr; A</span>
-          <span>Giá tăng dần</span>
-          <span>Giá giảm dần</span>
-          <span>Hàng mới</span>
-        </SortBar>
-        <ProductGrid>
-          {listProduct?.length > 0 &&
-            listProduct.map((product, index) => (
-              <ProductBox key={index} product={product} />
-            ))}
-        </ProductGrid>
-      </Center>
+      <Border>
+        <Center>
+          <SortBar>
+            Sắp xếp :<span>Tên A &rarr; Z</span>
+            <span>Tên Z &rarr; A</span>
+            <span>Giá tăng dần</span>
+            <span>Giá giảm dần</span>
+            <span>Hàng mới</span>
+          </SortBar>
+          <ProductGrid>
+            {listProduct?.length > 0 &&
+              listProduct.map((product, index) => (
+                <ProductBox key={index} product={product} />
+              ))}
+          </ProductGrid>
+          <ReactPaginate
+            pageCount={pageCount}
+            onPageChange={handleChangePage}
+            previousLabel="< previous"
+            nextLabel="next >"
+            marginPagesDisplayed={2}
+            pageClassName="border p-2"
+            previousClassName="border p-2"
+            nextClassName="border p-2"
+            nextLinkClassName=""
+            breakLabel="..."
+            containerClassName="mt-2 flex flex-row gap-2 justify-center"
+            activeClassName="bg-[#fd7e14] text-white"
+            renderOnZeroPageCount={null}
+          />
+        </Center>
+      </Border>
     </GridWrapper>
   );
 };
