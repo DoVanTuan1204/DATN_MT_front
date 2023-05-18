@@ -15,8 +15,10 @@ const StyledHeader = styled.header`
 `;
 
 const Logo = styled(Link)`
-  color: black;
+  color: #fd6403;
   text-decoration: none;
+  font-size: 20px;
+  font-weight: 500;
 `;
 
 const FirstNav = styled.nav`
@@ -43,9 +45,9 @@ const FirstHeader = () => {
     <StyledHeader>
       <Center>
         <FirstNav className="flex flex-row">
-          <Logo href={"/"}>Langbiang</Logo>
+          <Logo href={"/"}>NÔNG SẢN ĐÀ NẴNG</Logo>
           <input
-            className="bg-gray-200 px-5 py-2 rounded-full w-1/3"
+            className="bg-gray-200 px-5 py-2 rounded-lg w-1/3 p-2 "
             placeholder="Tìm kiếm sản phẩm"
           />
           <div className="flex flex-row items-center gap-2">

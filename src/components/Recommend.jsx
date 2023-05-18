@@ -77,7 +77,7 @@ const Recommend = () => {
         <WrapperTrademark>
           <label class="container">
             <input type="checkbox" />
-            <span class="checkmark">LangBiang Agri</span>
+            <span class="checkmark">Đà Nẵng Agri</span>
           </label>
           <label class="container">
             <input type="checkbox" />

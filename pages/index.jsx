@@ -10,14 +10,14 @@ const HomePage = () => {
     <div>
       <Center>
         <div className="flex flex-col gap-7 bg-white p-10 mt-10 rounded-xl">
-          <span className="text-3xl">Chúng tôi là Nông sản Langbiang</span>
+          <span className="text-3xl">Chúng tôi là Nông sản Đà Nẵng</span>
           <img src="/images/lanbiang_co_gi.webp" />
           <img src="/images/hethongdaily.webp" alt="" />
           <span className="uppercase font-semibold text-xl text-[#fd7e14]">
-            Câu chuyện của LangBiang Agri
+            Câu chuyện của Đà Nẵng Agri
           </span>
           <span>
-            Langbiang Agri bắt đầu sứ mệnh cung cấp nông sản, đặc sản vùng miền
+            Đà Nẵng Agri bắt đầu sứ mệnh cung cấp nông sản, đặc sản vùng miền
             theo tôn chỉ Sạch - Chuẩn - Chất từ năm 2017 với sản phẩm đầu tiên:
             <span className="text-red-500 font-semibold">
               Cà chua thân gỗ Magic S.
@@ -42,9 +42,9 @@ const HomePage = () => {
             DỊCH VỤ & SẢN PHẨM
           </span>
           <span className="text-blue-400">
-            Nông sản Langbiang chuyên cung cấp Nông sản, đặc sản vùng miền đạt
-            các tiêu chí chất lượng: HACCP, ISO22000, Chuỗi ATTP, VietGap, Các
-            dịch vụ và nhóm sản phẩm tiêu biểu bao gồm:
+            Nông sản Đà Nẵng chuyên cung cấp Nông sản, đặc sản vùng miền đạt các
+            tiêu chí chất lượng: HACCP, ISO22000, Chuỗi ATTP, VietGap, Các dịch
+            vụ và nhóm sản phẩm tiêu biểu bao gồm:
           </span>
           <ul className="list-decimal text-blue-400 ml-10">
             <li>

@@ -1,20 +1,21 @@
-import Link from 'next/link'
-import React from 'react'
-import styled from 'styled-components'
-import Center from '../../../components/Center'
-import { navItem } from '@/src/constant'
+import Link from "next/link";
+import React from "react";
+import styled from "styled-components";
+import Center from "../../../components/Center";
+import { navItem } from "@/src/constant";
 
 const StyledHeader = styled.header`
   background-color: #fd6403;
-`
+`;
 
 const SecondNav = styled.div`
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
+  gap: 70px;
   padding: 12px 0;
   color: #ffff;
   text-transform: uppercase;
-`
+`;
 
 const SecondHeader = () => {
   return (
@@ -29,7 +30,7 @@ const SecondHeader = () => {
         </SecondNav>
       </Center>
     </StyledHeader>
-  )
-}
+  );
+};
 
-export default SecondHeader
+export default SecondHeader;

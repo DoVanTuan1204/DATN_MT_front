@@ -122,7 +122,7 @@ const ProductPage = () => {
             <SecondWrapperItem>
               <div className="flex flex-col gap-3 border p-4 rounded-lg">
                 <span className="text-xl font-semibold">
-                  Chỉ có tại Nông Sản LangBiang
+                  Chỉ có tại Nông Sản Đà Nẵng
                 </span>
                 <div className="flex items-center gap-2">
                   <img className="w-8" src="/images/fresh_cert.webp" alt="" />
@@ -143,11 +143,6 @@ const ProductPage = () => {
                   <span>An toàn cho sức khoẻ</span>
                 </div>
               </div>
-              <img
-                className="cursor-pointer"
-                src="/images/payment_method.webp"
-                alt=""
-              />
             </SecondWrapperItem>
           </SecondGridWrapper>
         </SecondGridItem>
