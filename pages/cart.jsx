@@ -154,9 +154,9 @@ const Cart = () => {
             <Input type="text" placeholder="Tên người mua" />
             <Input type="text" placeholder="Số điện thoại" />
             <Input type="text" placeholder="Email" />
-            <Input type="text" placeholder="Phường/Xã" />
-            <Input type="text" placeholder="Thành phố" />
-            <Input type="text" placeholder="Tỉnh" />
+            <Input type="text" placeholder="Số nhà" />
+            <Input type="text" placeholder="Phường" />
+            <Input type="text" placeholder="Quận" />
             <PaymentButton onClick={() => PaymentSuccess()}>
               Thanh toán
             </PaymentButton>

@@ -1,5 +1,5 @@
-import Center from '@/src/components/Center'
-import MainLayout from '@/src/layout/MainLayout'
+import Center from "@/src/components/Center";
+import MainLayout from "@/src/layout/MainLayout";
 
 const DistributorSystem = () => {
   return (
@@ -8,10 +8,10 @@ const DistributorSystem = () => {
         <span className="text-3xl">Hệ thống Đại lý, NPP</span>
         <p>
           Nhằm tạo điều kiện thuận lợi cho khách hàng mua sản phẩm Nước cốt sâm
-          dây Ngọc Linh Langbiang Food và các sản phẩm thực phẩm công nghệ của
-          Nông sản LangBiang: Trà hoa, trà OO long, Cà phê, Trái cây sấy lạnh,
+          dây Ngọc Linh Đà Nẵng Food và các sản phẩm thực phẩm công nghệ của
+          Nông sản Đà Nẵng: Trà hoa, trà OO long, Cà phê, Trái cây sấy lạnh,
           nước cốt, bột rau củ..... Quý khách có thể mua tại hệ thống ONINE, bao
-          gồm: website, shopee, lazada, tiki....hoặc mua trực tiếp tại hơn{' '}
+          gồm: website, shopee, lazada, tiki....hoặc mua trực tiếp tại hơn{" "}
           <span className="text-red-500 font-semibold text-2xl">350</span> cửa
           hàng, đại lý, hệ thống nhà thuốc trên toàn quốc.
         </p>
@@ -22,35 +22,30 @@ const DistributorSystem = () => {
         </span>
         <ul
           type=""
-          className="list-decimal flex flex-col gap-3 p-4 font-semibold text-lg"
-        >
+          className="list-decimal flex flex-col gap-3 p-4 font-semibold text-lg">
           <li>
             Website
             <ul className="list-disc mx-4">
               <li>
-                <a href="https://nongsanlangbiang.com">
-                  https://nongsanlangbiang.com
+                <a href="https://nongsanĐà Nẵng.com">
+                  https://nongsanĐà Nẵng.com
                 </a>
               </li>
               <li>
-                <a href="https://langbiangagri.com">
-                  https://langbiangagri.com
+                <a href="https://Đà Nẵngagri.com">https://Đà Nẵngagri.com</a>
+              </li>
+              <li>
+                <a href="https://nongsanĐà Nẵng.vn">
+                  https://nongsanĐà Nẵng.vn
                 </a>
               </li>
               <li>
-                <a href="https://nongsanlangbiang.vn">
-                  https://nongsanlangbiang.vn
+                <a href="https://dacsandalatĐà Nẵng.com">
+                  https://dacsandalatĐà Nẵng.com
                 </a>
               </li>
               <li>
-                <a href="https://dacsandalatlangbiang.com">
-                  https://dacsandalatlangbiang.com
-                </a>
-              </li>
-              <li>
-                <a href="https://cafelangbiang.com">
-                  https://cafelangbiang.com
-                </a>
+                <a href="https://cafeĐà Nẵng.com">https://cafeĐà Nẵng.com</a>
               </li>
             </ul>
           </li>
@@ -60,17 +55,17 @@ const DistributorSystem = () => {
           </li>
           <li className="text-red-500">Tiktok</li>
           <li>
-            Fanpage Langbiang
+            Fanpage Đà Nẵng
             <ol className="font-medium mx-4 text-lg text-blue-500 list-decimal">
-              <li>Nông sản LangBiang</li>
-              <li>Showroom Đặc sản LangBiang Đà Lạt</li>
+              <li>Nông sản Đà Nẵng</li>
+              <li>Showroom Đặc sản Đà Nẵng Đà Lạt</li>
               <li>LBA - Chuyên sỉ Rau, Củ, Quả tươi</li>
-              <li>Mộc trà LangBiang</li>
-              <li>Hồng treo gió Langbiang</li>
-              <li>Trà dưỡng sinh Langbiang</li>
+              <li>Mộc trà Đà Nẵng</li>
+              <li>Hồng treo gió Đà Nẵng</li>
+              <li>Trà dưỡng sinh Đà Nẵng</li>
               <li>Bột rau củ sấy lạnh</li>
-              <li>Quà tết Langbiang</li>
-              <li>Muối xí muội Langbiang</li>
+              <li>Quà tết Đà Nẵng</li>
+              <li>Muối xí muội Đà Nẵng</li>
             </ol>
           </li>
           <li>
@@ -97,11 +92,11 @@ const DistributorSystem = () => {
         </span>
       </div>
     </Center>
-  )
-}
+  );
+};
 
 DistributorSystem.getLayout = function getLayout(page) {
-  return <MainLayout>{page}</MainLayout>
-}
+  return <MainLayout>{page}</MainLayout>;
+};
 
-export default DistributorSystem
+export default DistributorSystem;

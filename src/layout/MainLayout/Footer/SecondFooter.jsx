@@ -1,31 +1,31 @@
-import Center from '@/src/components/Center'
-import React from 'react'
-import styled from 'styled-components'
+import Center from "@/src/components/Center";
+import React from "react";
+import styled from "styled-components";
 
 const StyledFooter = styled.div`
   background-color: #a84d0d;
   color: white;
-`
+`;
 const GridWrapper = styled.div`
   padding: 40px 0;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
-`
+`;
 const GridCol = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   justify-content: space-between;
-`
+`;
 const ColTitle = styled.p`
   font-size: 21px;
   font-weight: 400;
-`
+`;
 const ColTemplate = styled.p`
   font-size: 17px;
   margin: 8px;
   font-weight: 200;
-`
+`;
 
 const SecondFooter = () => {
   return (
@@ -45,7 +45,7 @@ const SecondFooter = () => {
               62 đường 21, P8, Q.Gò Vấp, Tp.HCM Xem danh sách điểm bán toàn quốc
             </ColTemplate>
             <ColTemplate>Số điện thoại: 0981 84 88 87</ColTemplate>
-            <ColTemplate> Email: sales.m@langbiangagri.com</ColTemplate>
+            <ColTemplate> Email: sales.m@dannangagri.com</ColTemplate>
           </GridCol>
           <GridCol>
             <ColTitle>Tìm hiểu thêm</ColTitle>
@@ -77,7 +77,7 @@ const SecondFooter = () => {
         </GridWrapper>
       </Center>
     </StyledFooter>
-  )
-}
+  );
+};
 
-export default SecondFooter
+export default SecondFooter;
