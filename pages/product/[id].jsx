@@ -114,7 +114,7 @@ const ProductPage = () => {
             <Coupon />
             <button
               onClick={addTocard}
-              className="bg-[#fd7e14] p-3 text-white rounded-lg">
+              className="bg-green-800 p-3 text-white rounded-lg">
               Thêm vào giỏ hàng
             </button>
           </FirstGridWrapper>

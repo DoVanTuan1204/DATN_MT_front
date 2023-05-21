@@ -8,14 +8,18 @@ import { BaseOrange } from "@/public/Color";
 import Router, { useRouter } from "next/router";
 import StorageUtil, { STORAGE_KEY } from "@/src/util/storage";
 import { CartContext } from "@/src/components/CartContext";
+import SecondHeader from "./SecondHeader";
+import { GreenCode } from "@/ColorCode";
+import IconCart from "@/src/components/icon/IconCart";
+import IconSearch from "@/src/components/icon/IconSearch";
 
 const StyledHeader = styled.header`
-  background-color: #fff;
-  padding: 10px 0;
+  background-color: #ffffff;
+  padding: 40px 0;
 `;
 
 const Logo = styled(Link)`
-  color: #fd6403;
+  color: ${GreenCode};
   text-decoration: none;
   font-size: 20px;
   font-weight: 500;
@@ -30,13 +34,21 @@ const FirstNav = styled.nav`
 const CartWrapper = styled.div`
   display: flex;
   gap: 5px;
-  border: 2px solid ${BaseOrange};
-  padding: 10px;
   border-radius: 10px;
-  color: ${BaseOrange};
+  color: ${GreenCode};
   cursor: pointer;
 `;
-
+const IconWrapper = styled.div`
+  display: flex;
+  gap: 10px;
+  flex-direction: row;
+  align-items: center;
+`;
+const Icon = styled.div`
+  width: 20px;
+  color: black;
+  cursor: pointer;
+`;
 const FirstHeader = () => {
   const router = useRouter();
   const { cartProduct } = useContext(CartContext);
@@ -46,35 +58,24 @@ const FirstHeader = () => {
       <Center>
         <FirstNav className="flex flex-row">
           <Logo href={"/"}>NÔNG SẢN ĐÀ NẴNG</Logo>
-          <input
-            className="bg-gray-200 px-5 py-2 rounded-lg w-1/3 p-2 "
-            placeholder="Tìm kiếm sản phẩm"
-          />
-          <div className="flex flex-row items-center gap-2">
-            <div className="bg-green-400 p-1 rounded-full text-white">
-              <IconPhone />
-            </div>
-            <div className="flex flex-col">
-              <p>Hỗ trợ khách hàng</p>
-              <p className="font-bold">0981 84 88 87</p>
-            </div>
-          </div>
-          <div className="flex flex-row items-center gap-2">
-            <div className="bg-green-400 p-1 rounded-full text-white">
+          <SecondHeader />
+          <IconWrapper>
+            <Icon>
+              <IconSearch />
+            </Icon>
+            <Icon onClick={() => Router.push("/login")}>
               <IconUser />
-            </div>
-            <div className="flex flex-col">
-              <button onClick={() => Router.push("/login")}>Đăng nhập</button>
-              <button>Đăng ký</button>
-            </div>
-          </div>
-          <CartWrapper
-            onClick={() => {
-              router.push("/cart");
-            }}>
-            <p>Giỏ hàng</p>
-            <p>{cartProduct.length}</p>
-          </CartWrapper>
+            </Icon>
+            <CartWrapper
+              onClick={() => {
+                router.push("/cart");
+              }}>
+              <Icon>
+                <IconCart />
+              </Icon>
+              <p>{cartProduct.length}</p>
+            </CartWrapper>
+          </IconWrapper>
         </FirstNav>
       </Center>
     </StyledHeader>

@@ -5,7 +5,7 @@ import Center from "../../../components/Center";
 import { navItem } from "@/src/constant";
 
 const StyledHeader = styled.header`
-  background-color: #fd6403;
+  background-color: white;
 `;
 
 const SecondNav = styled.div`
@@ -13,7 +13,7 @@ const SecondNav = styled.div`
   justify-content: flex-start;
   gap: 70px;
   padding: 12px 0;
-  color: #ffff;
+  color: black;
   text-transform: uppercase;
 `;
 
