@@ -13,13 +13,24 @@ const GridWrapper = styled.div`
   padding-bottom: 20px;
   display: grid;
   grid-template-columns: 0.4fr 1.6fr;
+  @media screen and (max-width: 768px) {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
 `;
-
+const RecommendWrapper = styled.div`
+  @media screen and (max-width: 768px) {
+    display: none;
+  }
+`;
 const ProductGrid = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   gap: 20px;
   padding-top: 20px;
+  @media screen and (max-width: 768px) {
+    grid-template-columns: 1fr 1fr;
+  }
 `;
 
 const SortBar = styled.div`
@@ -28,6 +39,9 @@ const SortBar = styled.div`
   padding: 10px 0;
   font-size: 20px;
   border-bottom: 1px solid #d3d3d3;
+  @media screen and (max-width: 768px) {
+    display: none;
+  }
   span {
     color: gray;
     cursor: pointer;
@@ -38,6 +52,9 @@ const SortBar = styled.div`
 `;
 const Border = styled.div`
   border-left: 1px solid gray;
+  @media screen and (max-width: 768px) {
+    border: none;
+  }
 `;
 const NewProduct = () => {
   const [listProduct, setListProduct] = useState([]);
@@ -60,7 +77,9 @@ const NewProduct = () => {
   };
   return (
     <GridWrapper>
-      <Recommend />
+      <RecommendWrapper>
+        <Recommend />
+      </RecommendWrapper>
       <Border>
         <Center>
           <SortBar>

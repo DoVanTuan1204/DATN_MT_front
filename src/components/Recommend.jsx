@@ -1,3 +1,4 @@
+import { GreenCode } from "@/ColorCode";
 import React from "react";
 import styled from "styled-components";
 
@@ -6,28 +7,13 @@ const WrapperRecommend = styled.div`
   flex-direction: column;
   padding: 10px;
 `;
-const WrapperTrademark = styled.div`
-  display: flex;
-  flex-direction: column;
-  padding: 10px;
-  gap: 8px;
-  label {
-    display: flex;
-    gap: 14px;
-    align-items: center;
-  }
-  input {
-    scale: 180%;
-  }
-`;
 const MayBeYouLikeThisWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  margin-top: 40px;
 `;
 const MayBeYouLikeThis = styled.span`
   padding: 10px;
-  background-color: #f5a623;
+  background-color: ${GreenCode};
   color: white;
   border-radius: 8px;
   width: 100%;
@@ -72,19 +58,7 @@ const WrapperContent = styled.div`
 const Recommend = () => {
   return (
     <WrapperRecommend>
-      <div>
-        <span className="uppercase">Thương hiệu</span>
-        <WrapperTrademark>
-          <label class="container">
-            <input type="checkbox" />
-            <span class="checkmark">Đà Nẵng Agri</span>
-          </label>
-          <label class="container">
-            <input type="checkbox" />
-            <span class="checkmark">Khác</span>
-          </label>
-        </WrapperTrademark>
-      </div>
+      <div></div>
       <MayBeYouLikeThisWrapper>
         <MayBeYouLikeThis>Có thể bạn sẽ thích</MayBeYouLikeThis>
         <WrapperItem>

@@ -1,5 +1,5 @@
 import Center from "@/src/components/Center";
-import NewProduct from "@/src/components/NewProduct";
+import NewProduct from "@/src/components/ListProduct";
 import MainLayout from "@/src/layout/MainLayout";
 import styled from "styled-components";
 
