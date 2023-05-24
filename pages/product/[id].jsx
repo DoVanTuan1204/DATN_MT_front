@@ -81,7 +81,6 @@ const ProductPage = () => {
   };
   const fetchDetailProduct = async () => {
     const data = await ProductAPI.getDetailProduct(router.query.id);
-    console.log(data);
     setDetailProduct(data.data);
   };
   useEffect(() => {

@@ -5,6 +5,7 @@ export const CartContext = createContext({});
 export function CartContextProvider({ children }) {
   const ls = typeof window !== "undefined" ? window.localStorage : null;
   const [cartProduct, setCartProduct] = useState([]);
+  const [isRegister, setIsRegister] = useState(false);
   useEffect(() => {
     if (cartProduct?.length > 0) {
       ls?.setItem("cart", JSON.stringify(cartProduct));
@@ -31,6 +32,10 @@ export function CartContextProvider({ children }) {
     setCartProduct([]);
     localStorage.removeItem("cart");
   }
+  const RegisterForm = () => {
+    setIsRegister(!isRegister);
+    localStorage.setItem("register", isRegister);
+  };
   return (
     <CartContext.Provider
       value={{
@@ -39,6 +44,7 @@ export function CartContextProvider({ children }) {
         removeProduct,
         addProduct,
         clearCart,
+        RegisterForm,
       }}>
       {children}
     </CartContext.Provider>
