@@ -9,6 +9,8 @@ import { formatPrice } from "@/src/util/helpers";
 import { useRouter } from "next/router";
 import React, { useContext, useEffect, useState } from "react";
 import styled from "styled-components";
+import { useFormik } from "formik";
+import OrderAPI from "@/src/api/order";
 
 const WrapperOrders = styled.div`
   padding: 20px;
@@ -16,6 +18,9 @@ const WrapperOrders = styled.div`
   display: grid;
   grid-template-columns: 1.5fr 0.5fr;
   gap: 20px;
+  @media screen and (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
 `;
 const Box = styled.div`
   padding: 20px;
@@ -54,11 +59,12 @@ const PaymentButton = styled.button`
 const Cart = () => {
   const { cartProduct, addProduct, removeProduct } = useContext(CartContext);
   const [products, setProducts] = useState([]);
+  const [properties, setProperties] = useState({});
+  const [listId, setListId] = useState([]);
   const router = useRouter();
   const unique = (arr) => {
     return Array.from(new Set(arr));
   };
-
   const fetchDetailProduct = async () => {
     const detailProduct = await Promise.all(
       unique(cartProduct).map(async (id) => {
@@ -75,8 +81,8 @@ const Cart = () => {
     }
   }, [cartProduct]);
 
-  const moreOfThisProduct = (id) => {
-    addProduct(id);
+  const moreOfThisProduct = (product) => {
+    addProduct(product.id);
   };
   const lessOfThisProduct = (id) => {
     removeProduct(id);
@@ -86,9 +92,42 @@ const Cart = () => {
     const price = products.find((p) => p.id === productID)?.giatien || 0;
     total += price;
   }
-  const PaymentSuccess = () => {
-    router.push("/thanh-toan-thanh-cong");
+
+  const sumPrice = (id, amount) => {
+    let total = 0;
+    const price = products.find((p) => p.id === id)?.giatien;
+    return (total = price * amount);
   };
+  const PaymentSuccess = async () => {
+    if (!localStorage.getItem("profile")) {
+      router.push("/login");
+    } else {
+      let count = {};
+      const data = {};
+      data.sanpham = [];
+      cartProduct.forEach(function (i) {
+        count[i] = (count[i] || 0) + 1;
+      });
+      setListId([...new Set(cartProduct)]);
+      listId.map((id) => {
+        const a = {
+          id: parseInt(id),
+          soluong: parseInt(count[id]),
+          dongia: sumPrice(id, parseInt(count[id])),
+        };
+        data.sanpham.push(a);
+      });
+      try {
+        const response = await OrderAPI.createOrder(data);
+        if (response) {
+          router.push("/thanh-toan-thanh-cong");
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    }
+  };
+
   return (
     <div>
       <Center>
@@ -123,7 +162,7 @@ const Cart = () => {
                           {cartProduct.filter((id) => id === product.id).length}
                         </IncreaseValue>
                         <ButtonIncrease
-                          onClick={() => moreOfThisProduct(product.id)}
+                          onClick={() => moreOfThisProduct(product)}
                           type="button">
                           +
                         </ButtonIncrease>
@@ -140,7 +179,6 @@ const Cart = () => {
                   <tr>
                     <td></td>
                     <td></td>
-
                     <td>{formatPrice(total)}đ</td>
                   </tr>
                 </tbody>

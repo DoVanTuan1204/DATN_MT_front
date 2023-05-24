@@ -52,7 +52,13 @@ const Icon = styled.div`
 const FirstHeader = () => {
   const router = useRouter();
   const { cartProduct } = useContext(CartContext);
-  console.log({ cartProduct });
+  const profileUser = () => {
+    if (!localStorage.getItem("profile")) {
+      Router.push("/login");
+    } else {
+      router.push("/profile");
+    }
+  };
   return (
     <StyledHeader>
       <Center>
@@ -63,7 +69,7 @@ const FirstHeader = () => {
             <Icon>
               <IconSearch />
             </Icon>
-            <Icon onClick={() => Router.push("/login")}>
+            <Icon onClick={() => profileUser()}>
               <IconUser />
             </Icon>
             <CartWrapper
