@@ -15,6 +15,12 @@ const FormRegister = () => {
       username: "",
       password: "",
       rePassword: "",
+      cccd: "",
+      diachi: "",
+      gioitinh: "",
+      ngaysinh: "",
+      sdt: "",
+      tenKH: "",
     },
     validationSchema: yup.object({
       username: yup.string().required(),
@@ -32,6 +38,13 @@ const FormRegister = () => {
         const data = {};
         data.username = values.username;
         data.password = values.rePassword;
+        data.cccd = values.cccd;
+        data.diachi = values.diachi;
+        data.gioitinh = values.gioitinh;
+        data.ngaysinh = values.ngaysinh;
+        data.sdt = values.sdt;
+        data.tenKH = values.tenKH;
+
         const response = await RegisterAPI.Register(data);
         if (response) {
           alert("Đăng ký thành công xin mời đăng nhập");
@@ -53,65 +66,170 @@ const FormRegister = () => {
         <form
           onSubmit={formik.handleSubmit}
           className="w-full mt-6 mr-0 mb-0 ml-0 relative space-y-8">
-          <div className="relative">
-            <p
-              className="bg-white pt-0 pr-2 pb-0 pl-2 -mt-3 mr-0 mb-0 ml-2 font-medium text-gray-600
+          <div className="flex flex-col lg:flex-row  gap-5">
+            <div className="flex flex-col">
+              <div className="relative pb-10">
+                <p
+                  className="bg-white pt-0 pr-2 pb-0 pl-2 -mt-3 mr-0 mb-0 ml-2 font-medium text-gray-600
             absolute">
-              Username
-            </p>
-            <input
-              name="username"
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-              placeholder="John"
-              type="text"
-              className="border placeholder-gray-400 focus:outline-none
+                  Username
+                </p>
+                <input
+                  name="username"
+                  onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
+                  placeholder="John"
+                  type="text"
+                  className="border placeholder-gray-400 focus:outline-none
             focus:border-black w-full pt-4 pr-4 pb-4 pl-4 mt-2 mr-0 mb-0 ml-0 text-base block bg-white
             border-gray-300 rounded-md"
-            />
-            {formik.errors.email && formik.touched.email && formik.errors.email}
-          </div>
-          <div className="relative">
-            <p
-              className="bg-white pt-0 pr-2 pb-0 pl-2 -mt-3 mr-0 mb-0 ml-2 font-medium text-gray-600
+                />
+                {formik.errors.email &&
+                  formik.touched.email &&
+                  formik.errors.email}
+              </div>
+              <div className="relative pb-10">
+                <p
+                  className="bg-white pt-0 pr-2 pb-0 pl-2 -mt-3 mr-0 mb-0 ml-2 font-medium text-gray-600
             absolute">
-              Mật khẩu
-            </p>
-            <input
-              name="password"
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-              placeholder="Mật khẩu"
-              type="password"
-              className="border placeholder-gray-400 focus:outline-none
+                  Mật khẩu
+                </p>
+                <input
+                  name="password"
+                  onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
+                  placeholder="Mật khẩu"
+                  type="password"
+                  className="border placeholder-gray-400 focus:outline-none
             focus:border-black w-full pt-4 pr-4 pb-4 pl-4 mt-2 mr-0 mb-0 ml-0 text-base block bg-white
             border-gray-300 rounded-md"
-            />
-            {formik.errors.password &&
-              formik.touched.password &&
-              formik.errors.password}
-          </div>
-          <div className="relative">
-            <p
-              className="bg-white pt-0 pr-2 pb-0 pl-2 -mt-3 mr-0 mb-0 ml-2 font-medium text-gray-600
+                />
+                {formik.errors.password &&
+                  formik.touched.password &&
+                  formik.errors.password}
+              </div>
+              <div className="relative pb-10">
+                <p
+                  className="bg-white pt-0 pr-2 pb-0 pl-2 -mt-3 mr-0 mb-0 ml-2 font-medium text-gray-600
             absolute">
-              Nhập lại mật khẩu
-            </p>
-            <input
-              name="rePassword"
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-              placeholder="Nhập lại mật khẩu"
-              type="password"
-              className="border placeholder-gray-400 focus:outline-none
+                  Nhập lại mật khẩu
+                </p>
+                <input
+                  name="rePassword"
+                  onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
+                  placeholder="Nhập lại mật khẩu"
+                  type="password"
+                  className="border placeholder-gray-400 focus:outline-none
             focus:border-black w-full pt-4 pr-4 pb-4 pl-4 mt-2 mr-0 mb-0 ml-0 text-base block bg-white
             border-gray-300 rounded-md"
-            />
-            {formik.errors.rePassword &&
-              formik.touched.rePassword &&
-              formik.errors.rePassword}
+                />
+                {formik.errors.rePassword &&
+                  formik.touched.rePassword &&
+                  formik.errors.rePassword}
+              </div>
+              <div className="relative">
+                <p
+                  className="bg-white pt-0 pr-2 pb-0 pl-2 -mt-3 mr-0 mb-0 ml-2 font-medium text-gray-600
+            absolute">
+                  Địa chỉ
+                </p>
+                <input
+                  name="diachi"
+                  onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
+                  placeholder="Địa chỉ"
+                  type="text"
+                  className="border placeholder-gray-400 focus:outline-none
+            focus:border-black w-full pt-4 pr-4 pb-4 pl-4 mt-2 mr-0 mb-0 ml-0 text-base block bg-white
+            border-gray-300 rounded-md"
+                />
+                {formik.errors.diachi &&
+                  formik.touched.diachi &&
+                  formik.errors.diachi}
+              </div>
+            </div>
+            <div>
+              <div className="relative pb-10">
+                <p
+                  className="bg-white pt-0 pr-2 pb-0 pl-2 -mt-3 mr-0 mb-0 ml-2 font-medium text-gray-600
+            absolute">
+                  Căn cước công dân
+                </p>
+                <input
+                  name="cccd"
+                  onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
+                  placeholder="Căn cước công dân"
+                  type="text"
+                  className="border placeholder-gray-400 focus:outline-none
+            focus:border-black w-full pt-4 pr-4 pb-4 pl-4 mt-2 mr-0 mb-0 ml-0 text-base block bg-white
+            border-gray-300 rounded-md"
+                />
+                {formik.errors.cccd &&
+                  formik.touched.cccd &&
+                  formik.errors.cccd}
+              </div>
+              <div className="relative pb-10">
+                <p
+                  className="bg-white pt-0 pr-2 pb-0 pl-2 -mt-3 mr-0 mb-0 ml-2 font-medium text-gray-600
+            absolute">
+                  Tên khách hàng
+                </p>
+                <input
+                  name="tenKH"
+                  onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
+                  placeholder="Tên khách hàng"
+                  type="text"
+                  className="border placeholder-gray-400 focus:outline-none
+            focus:border-black w-full pt-4 pr-4 pb-4 pl-4 mt-2 mr-0 mb-0 ml-0 text-base block bg-white
+            border-gray-300 rounded-md"
+                />
+                {formik.errors.tenKH &&
+                  formik.touched.tenKH &&
+                  formik.errors.tenKH}
+              </div>
+              <div className="relative pb-10">
+                <p
+                  className="bg-white pt-0 pr-2 pb-0 pl-2 -mt-3 mr-0 mb-0 ml-2 font-medium text-gray-600
+            absolute">
+                  Số điện thoại
+                </p>
+                <input
+                  name="sdt"
+                  onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
+                  placeholder="Số điện thoại"
+                  type="text"
+                  className="border placeholder-gray-400 focus:outline-none
+            focus:border-black w-full pt-4 pr-4 pb-4 pl-4 mt-2 mr-0 mb-0 ml-0 text-base block bg-white
+            border-gray-300 rounded-md"
+                />
+                {formik.errors.sdt && formik.touched.sdt && formik.errors.sdt}
+              </div>
+              <div className="relative">
+                <p
+                  className="bg-white pt-0 pr-2 pb-0 pl-2 -mt-3 mr-0 mb-0 ml-2 font-medium text-gray-600
+            absolute">
+                  Giới tính
+                </p>
+                <input
+                  name="gioitinh"
+                  onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
+                  placeholder="Giới tính"
+                  type="text"
+                  className="border placeholder-gray-400 focus:outline-none
+            focus:border-black w-full pt-4 pr-4 pb-4 pl-4 mt-2 mr-0 mb-0 ml-0 text-base block bg-white
+            border-gray-300 rounded-md"
+                />
+                {formik.errors.gioitinh &&
+                  formik.touched.gioitinh &&
+                  formik.errors.gioitinh}
+              </div>
+            </div>
           </div>
-
           <div className="relative">
             <button
               type="submit"
