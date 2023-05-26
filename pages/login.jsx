@@ -12,90 +12,109 @@ import React, { useContext, useEffect, useState } from "react";
 import * as yup from "yup";
 
 const Login = () => {
-  // const formik = useFormik({
-  //   initialValues: {
-  //     username: "",
-  //     password: "",
-  //   },
-  //   validationSchema: yup.object({
-  //     username: yup.string().required(),
-  //     password: yup
-  //       .string()
-  //       .required("Please enter your password.")
-  //       .min(8, "Your password is too short."),
-  //     rePassword: yup
-  //       .string()
-  //       .required("Please retype your password.")
-  //       .oneOf([yup.ref("password")], "Your passwords do not match."),
-  //   }),
-  //   onSubmit: async (values) => {
-  //     try {
-  //       const response = await AuthenticateAPI.signIn(values);
-  //       if (response?.data?.access) {
-  //         StorageUtil.set(STORAGE_KEY.JWT, response?.data?.access);
-  //         const profile = await ProfileAPI.GetProfile();
-  //         localStorage.setItem("profile", JSON.stringify(profile.data.user));
-  //         Router.push("/");
-  //       }
-  //       console.log(values);
-  //     } catch (err) {
-  //       console.error(err);
-  //     }
-  //   },
-  // });
-
-  // const secondFormik = useFormik({
-  //   initialValues: {
-  //     username: "",
-  //     password: "",
-  //     rePassword: "",
-  //   },
-
-  //   validationSchema: yup.object({
-  //     username: yup.string().required(),
-  //     password: yup
-  //       .string()
-  //       .required("Please enter your password.")
-  //       .min(8, "Your password is too short."),
-  //     rePassword: yup
-  //       .string()
-  //       .required("Please retype your password.")
-  //       .oneOf([yup.ref("password")], "Your passwords do not match."),
-  //   }),
-  //   onSubmit: async (values) => {
-  //     try {
-  //       console.log(values);
-  //       // const response = await RegisterAPI.Register(username, rePassword);
-  //       // if (response?.data?.access) {
-  //       //   StorageUtil.set(STORAGE_KEY.JWT, response?.data?.access);
-  //       //   const profile = await ProfileAPI.GetProfile();
-  //       //   localStorage.setItem("profile", JSON.stringify(profile.data.user));
-  //       //   Router.push("/");
-  //       // }
-  //     } catch (err) {
-  //       console.error(err);
-  //     }
-  //   },
-  // });
-
   const [isRegister, setIsRegister] = useState(false);
 
+  const { RegisterForm } = useContext(CartContext);
+  const formik = useFormik({
+    initialValues: {
+      username: "",
+      password: "",
+    },
+
+    onSubmit: async (values) => {
+      try {
+        const response = await AuthenticateAPI.signIn(values);
+        if (response?.data?.access) {
+          StorageUtil.set(STORAGE_KEY.JWT, response?.data?.access);
+          const profile = await ProfileAPI.GetProfile();
+          localStorage.setItem("profile", JSON.stringify(profile.data.user));
+          Router.push("/");
+        }
+        console.log(values);
+      } catch (err) {
+        console.error(err);
+      }
+    },
+  });
+
   return (
-    <div class="bg-white relative h-[100vh] lg:py-18">
+    <div className="bg-white relative h-[100vh] lg:py-18">
       <div
-        class="flex flex-col items-center justify-between pt-0 pr-10 pb-0 pl-10 mt-0 mr-auto mb-0 ml-auto max-w-7xl
+        className="flex flex-col items-center justify-between pt-0 pr-10 pb-0 pl-10 mt-0 mr-auto mb-0 ml-auto max-w-7xl
           xl:px-5 lg:flex-row">
-        <div class="flex flex-col items-center w-full pt-5 pr-10 pb-20 pl-10 lg:pt-20 lg:flex-row">
-          <div class="w-full bg-cover relative max-w-md lg:max-w-2xl lg:w-7/12">
-            <div class="flex flex-col items-center justify-center w-full h-full relative lg:pr-10">
+        <div className="flex flex-col items-center w-full pt-5 pr-10 pb-20 pl-10 lg:pt-20 lg:flex-row">
+          <div className="w-full bg-cover relative max-w-md lg:max-w-2xl lg:w-7/12">
+            <div className="flex flex-col items-center justify-center w-full h-full relative lg:pr-10">
               <img
                 src="https://res.cloudinary.com/macxenon/image/upload/v1631570592/Run_-_Health_qcghbu.png"
-                class="btn-"
+                className="btn-"
               />
             </div>
           </div>
-          <div class="w-full mt-20 mr-0 mb-0 ml-0 relative z-10 max-w-2xl lg:mt-0 lg:w-5/12">
-            {isRegister == true ? <FormRegister /> : <FormLogin />}
+          <div className="w-full mt-20 mr-0 mb-0 ml-0 relative z-10 max-w-2xl lg:mt-0 lg:w-5/12">
+            {isRegister == true ? (
+              <FormRegister />
+            ) : (
+              <div className=" flex flex-col items-start justify-start pt-10 pr-10 pb-10 pl-10 bg-white shadow-2xl rounded-xl relative z-10">
+                <p className="w-full text-3xl font-medium text-center leading-snug font-serif">
+                  Đăng nhập
+                </p>
+                <form
+                  onSubmit={formik.handleSubmit}
+                  className="w-full mt-6 mr-1 mb-0 ml-0 relative space-y-8">
+                  <div className="relative">
+                    <p
+                      className="bg-white pt-0 pr-2 pb-0 pl-2 -mt-3 mr-0 mb-0 ml-2 font-medium text-gray-600
+            absolute">
+                      Username
+                    </p>
+                    <input
+                      name="username"
+                      onChange={formik.handleChange}
+                      onBlur={formik.handleBlur}
+                      placeholder="John"
+                      type="text"
+                      className="border placeholder-gray-400 focus:outline-none
+            focus:border-black w-full pt-4 pr-4 pb-4 pl-4 mt-2 mr-0 mb-0 ml-0 text-base block bg-white
+            border-gray-300 rounded-md"
+                    />
+                    {formik.errors.email &&
+                      formik.touched.email &&
+                      formik.errors.email}
+                  </div>
+                  <div className="relative">
+                    <p
+                      className="bg-white pt-0 pr-2 pb-0 pl-2 -mt-3 mr-0 mb-0 ml-2 font-medium text-gray-600
+            absolute">
+                      Mật khẩu
+                    </p>
+                    <input
+                      name="password"
+                      onChange={formik.handleChange}
+                      onBlur={formik.handleBlur}
+                      placeholder="Mật khẩu"
+                      type="password"
+                      className="border placeholder-gray-400 focus:outline-none
+            focus:border-black w-full pt-4 pr-4 pb-4 pl-4 mt-2 mr-0 mb-0 ml-0 text-base block bg-white
+            border-gray-300 rounded-md"
+                    />
+                    {formik.errors.password &&
+                      formik.touched.password &&
+                      formik.errors.password}
+                  </div>
+
+                  <div className="relative">
+                    <button
+                      type="submit"
+                      disabled={formik.isSubmitting}
+                      className="w-full inline-block pt-4 pr-5 pb-4 pl-5 text-xl font-medium text-center text-white bg-indigo-500
+            rounded-lg transition duration-200 hover:bg-indigo-600 ease">
+                      Đăng nhập
+                    </button>
+                  </div>
+                </form>
+              </div>
+            )}
           </div>
         </div>
         <div
