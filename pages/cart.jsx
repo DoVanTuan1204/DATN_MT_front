@@ -111,9 +111,9 @@ const Cart = () => {
       setListId([...new Set(cartProduct)]);
       listId.map((id) => {
         const a = {
-          id: parseInt(id),
+          id: id,
           soluong: parseInt(count[id]),
-          dongia: sumPrice(id, parseInt(count[id])),
+          thanhtien: sumPrice(id, parseInt(count[id])),
         };
         data.sanpham.push(a);
       });
