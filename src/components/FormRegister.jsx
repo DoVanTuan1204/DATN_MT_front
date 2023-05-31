@@ -38,12 +38,13 @@ const FormRegister = () => {
         const data = {};
         data.username = values.username;
         data.password = values.rePassword;
-        data.cccd = values.cccd;
-        data.diachi = values.diachi;
-        data.gioitinh = values.gioitinh;
-        data.ngaysinh = values.ngaysinh;
-        data.sdt = values.sdt;
-        data.tenKH = values.tenKH;
+        data.user = {};
+        data.user.cccd = values.cccd;
+        data.user.diachi = values.diachi;
+        data.user.gioitinh = values.gioitinh;
+        data.user.ngaysinh = values.ngaysinh;
+        data.user.sdt = values.sdt;
+        data.user.tenKH = values.tenKH;
 
         const response = await RegisterAPI.Register(data);
         if (response) {

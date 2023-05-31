@@ -15,6 +15,10 @@ const SecondNav = styled.div`
   padding: 12px 0;
   color: black;
   text-transform: uppercase;
+  @media screen and (max-width: 768px) {
+    display: flex;
+    flex-direction: column;
+  }
 `;
 
 const SecondHeader = () => {

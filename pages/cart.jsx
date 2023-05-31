@@ -11,6 +11,7 @@ import React, { useContext, useEffect, useState } from "react";
 import styled from "styled-components";
 import { useFormik } from "formik";
 import OrderAPI from "@/src/api/order";
+import * as yup from "yup";
 
 const WrapperOrders = styled.div`
   padding: 20px;
@@ -33,7 +34,6 @@ const Box = styled.div`
     padding: 10px 0;
   }
 `;
-
 const ImageWrapper = styled.td`
   img {
     max-width: 100px;
@@ -98,35 +98,81 @@ const Cart = () => {
     const price = products.find((p) => p.id === id)?.giatien;
     return (total = price * amount);
   };
-  const PaymentSuccess = async () => {
-    if (!localStorage.getItem("profile")) {
-      router.push("/login");
-    } else {
-      let count = {};
+  // const PaymentSuccess = async () => {
+  //   if (!localStorage.getItem("profile")) {
+  //     router.push("/login");
+  //   } else {
+  //     let count = {};
+  //     const data = {};
+  //     data.sanpham = [];
+  //     cartProduct.forEach(function (i) {
+  //       count[i] = (count[i] || 0) + 1;
+  //     });
+  //     setListId([...new Set(cartProduct)]);
+  //     listId.map((id) => {
+  //       const a = {
+  //         id: id,
+  //         soluong: parseInt(count[id]),
+  //         thanhtien: sumPrice(id, parseInt(count[id])),
+  //       };
+  //     });
+  //     try {
+  //       const response = await OrderAPI.createOrder(data);
+  //       if (response) {
+  //         router.push("/thanh-toan-thanh-cong");
+  //       }
+  //     } catch (error) {
+  //       console.log(error);
+  //     }
+  //   }
+  // };
+
+  const formik = useFormik({
+    initialValues: {
+      sonha: "",
+      phuong: "",
+      quan: "",
+      sdtgiaohang: "",
+      full_name: "",
+    },
+
+    onSubmit: async (values) => {
       const data = {};
-      data.sanpham = [];
-      cartProduct.forEach(function (i) {
-        count[i] = (count[i] || 0) + 1;
-      });
-      setListId([...new Set(cartProduct)]);
-      listId.map((id) => {
-        const a = {
-          id: id,
-          soluong: parseInt(count[id]),
-          thanhtien: sumPrice(id, parseInt(count[id])),
-        };
-        data.sanpham.push(a);
-      });
-      try {
-        const response = await OrderAPI.createOrder(data);
-        if (response) {
-          router.push("/thanh-toan-thanh-cong");
+
+      if (!localStorage.getItem("profile")) {
+        router.push("/login");
+      } else {
+        let count = {};
+        data.addr = values.sonha + "," + values.phuong + "," + values.quan;
+        data.sdtgiaohang = values.sdtgiaohang;
+        data.full_name = values.full_name;
+        data.sanpham = [];
+        cartProduct.forEach(function (i) {
+          count[i] = (count[i] || 0) + 1;
+        });
+        setListId([...new Set(cartProduct)]);
+        listId.map((id) => {
+          const a = {
+            id: id,
+            soluong: parseInt(count[id]),
+            thanhtien: sumPrice(id, parseInt(count[id])),
+          };
+          console.log(a);
+          data.sanpham.push(a);
+        });
+
+        try {
+          console.log(data);
+          const response = await OrderAPI.createOrder(data);
+          if (response) {
+            router.push("/thanh-toan-thanh-cong");
+          }
+        } catch (error) {
+          console.log(error);
         }
-      } catch (error) {
-        console.log(error);
       }
-    }
-  };
+    },
+  });
 
   return (
     <div>
@@ -149,7 +195,7 @@ const Cart = () => {
                   {products.map((product, index) => (
                     <tr key={index}>
                       <ImageWrapper>
-                        <img src="/images/buoi_5_roi.jpg" alt="" />
+                        <img src={product?.rootImage} alt="" />
                         {product.ten}
                       </ImageWrapper>
                       <td>
@@ -189,15 +235,44 @@ const Cart = () => {
           </Box>
           <Box>
             <h2>Thông tin người mua</h2>
-            <Input type="text" placeholder="Tên người mua" />
-            <Input type="text" placeholder="Số điện thoại" />
-            <Input type="text" placeholder="Email" />
-            <Input type="text" placeholder="Số nhà" />
-            <Input type="text" placeholder="Phường" />
-            <Input type="text" placeholder="Quận" />
-            <PaymentButton onClick={() => PaymentSuccess()}>
-              Thanh toán
-            </PaymentButton>
+            <form onSubmit={formik.handleSubmit}>
+              <Input
+                type="text"
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                name="full_name"
+                placeholder="Tên người mua"
+              />
+              <Input
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                type="text"
+                name="sdtgiaohang"
+                placeholder="Số điện thoại"
+              />
+              <Input
+                type="text"
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                name="sonha"
+                placeholder="Số nhà"
+              />
+              <Input
+                type="text"
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                name="phuong"
+                placeholder="Phường"
+              />
+              <Input
+                type="text"
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                name="quan"
+                placeholder="Quận"
+              />
+              <PaymentButton type="submit">Thanh toán</PaymentButton>
+            </form>
           </Box>
         </WrapperOrders>
       </Center>
