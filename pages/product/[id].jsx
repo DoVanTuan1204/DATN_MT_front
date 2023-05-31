@@ -20,10 +20,17 @@ const WrapperDetail = styled.div`
   padding: 15px;
   border-radius: 10px;
   gap: 20px;
+  @media screen and (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
 `;
+
 const SecondGridItem = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
+  @media screen and (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
 `;
 
 const FirstGridWrapper = styled.div`
@@ -67,6 +74,14 @@ const DescriptionWrapper = styled.div`
   border-radius: 10px;
   display: grid;
   grid-template-columns: 1.6fr 0.4fr;
+  @media screen and (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
+`;
+const StyledRecommend = styled.div`
+  @media screen and (max-width: 768px) {
+    display: none;
+  }
 `;
 const ProductPage = () => {
   const router = useRouter();
@@ -94,7 +109,7 @@ const ProductPage = () => {
           {/* {detailProduct?.anh.map((img, index) => (
             <img src={img} key={index} />
           ))} */}
-          <img src={fakeData[0].images} alt="" />
+          <img src={detailProduct?.rootImage} alt="" />
         </div>
         <SecondGridItem>
           <FirstGridWrapper>
@@ -147,15 +162,15 @@ const ProductPage = () => {
         </SecondGridItem>
       </WrapperDetail>
       <DescriptionWrapper>
-        <div className="flex flex-col gap-4 border-r pr-10">
+        <div className="flex flex-col border-r-0 gap-4 sm:border-r pr-10">
           <span className="font-bold text-2xl text-gray-500">
             Mô tả sản phẩm
           </span>
           <span>{detailProduct?.mota}</span>
         </div>
-        <div>
+        <StyledRecommend>
           <Recommend />
-        </div>
+        </StyledRecommend>
       </DescriptionWrapper>
     </Center>
   );

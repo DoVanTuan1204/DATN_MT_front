@@ -43,10 +43,10 @@ const ProductBox = ({ product }) => {
 
   const addToCart = (product) => {
     const params = {
-      id: product.id,
-      ten: product.ten,
-      giatien: product.giatien,
-      anh: product.anh,
+      id: product?.id,
+      ten: product?.ten,
+      giatien: product?.giatien,
+      anh: product?.anh,
       amount: 1,
     };
     const currentCart = StorageUtil.get(STORAGE_KEY.RECENT_CART);
@@ -75,11 +75,11 @@ const ProductBox = ({ product }) => {
         // addToCart(product)
       }}>
       <WhiteBox>
-        <img src={product?.anh[0]?.anh} />
+        <img src={product?.rootImage} />
       </WhiteBox>
       <Title>
-        {product.ten}
-        <span>{formatPrice(product.giatien)} đ</span>
+        {product?.ten}
+        <span>{formatPrice(product?.giatien)} đ</span>
       </Title>
     </ProductWrapper>
   );

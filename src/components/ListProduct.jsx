@@ -56,8 +56,8 @@ const Border = styled.div`
     border: none;
   }
 `;
-const NewProduct = () => {
-  const [listProduct, setListProduct] = useState([]);
+const ListProduct = (products) => {
+  const [listProduct, setListProduct] = useState([] || products);
   const [pageCount, setPageCount] = useState(0);
   const [paging, setPaging] = useState();
 
@@ -107,7 +107,7 @@ const NewProduct = () => {
             nextLinkClassName=""
             breakLabel="..."
             containerClassName="mt-2 flex flex-row gap-2 justify-center"
-            activeClassName="bg-[#fd7e14] text-white"
+            activeClassName="bg-[#fd7e14] text-green-900"
             renderOnZeroPageCount={null}
           />
         </Center>
@@ -116,4 +116,4 @@ const NewProduct = () => {
   );
 };
 
-export default NewProduct;
+export default ListProduct;
