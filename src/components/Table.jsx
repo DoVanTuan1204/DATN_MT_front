@@ -6,7 +6,7 @@ const StyledTable = styled.table`
   th {
     text-align: left;
     text-transform: uppercase;
-    color: #fad5a5;
+    color: ${SecondGreenCode};
     font-weight: 600;
     font-size: 20px;
   }
@@ -18,6 +18,7 @@ const StyledTable = styled.table`
 `;
 
 import React from "react";
+import { SecondGreenCode } from "@/ColorCode";
 
 const Table = (props) => {
   return <StyledTable {...props} />;

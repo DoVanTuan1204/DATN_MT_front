@@ -37,7 +37,7 @@ const FirstBox = styled.div`
     font-weight: 500;
   }
   span {
-    color: ${GreenCode};
+    color: ${SecondGreenCode};
   }
   button {
     color: white;

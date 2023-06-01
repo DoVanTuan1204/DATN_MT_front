@@ -78,11 +78,7 @@ const DescriptionWrapper = styled.div`
     grid-template-columns: 1fr;
   }
 `;
-const StyledRecommend = styled.div`
-  @media screen and (max-width: 768px) {
-    display: none;
-  }
-`;
+
 const ProductPage = () => {
   const router = useRouter();
   const [detailProduct, setDetailProduct] = useState();
@@ -121,8 +117,8 @@ const ProductPage = () => {
               </span>
             </span>
             <div className="w-full bg-gray-100 rounded-lg p-2">
-              <span className="font-semibold text-2xl text-red-500">
-                {formatPrice(detailProduct?.giatien)} đ
+              <span className="font-semibold text-2xl text-green-900">
+                {formatPrice(detailProduct?.giatien)} VND
               </span>
             </div>
             <Coupon />
@@ -162,15 +158,12 @@ const ProductPage = () => {
         </SecondGridItem>
       </WrapperDetail>
       <DescriptionWrapper>
-        <div className="flex flex-col border-r-0 gap-4 sm:border-r pr-10">
+        <div className="flex flex-col border-r-0 gap-4  pr-10">
           <span className="font-bold text-2xl text-gray-500">
             Mô tả sản phẩm
           </span>
           <span>{detailProduct?.mota}</span>
         </div>
-        <StyledRecommend>
-          <Recommend />
-        </StyledRecommend>
       </DescriptionWrapper>
     </Center>
   );

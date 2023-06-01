@@ -1,11 +1,13 @@
-import React from 'react'
-import Center from '../../../components/Center'
-import styled from 'styled-components'
+import React from "react";
+import Center from "../../../components/Center";
+import styled from "styled-components";
+import { SecondGreenCode } from "@/ColorCode";
+import { BackgroundProductBox } from "@/ColorCode";
 
 const StyledFooter = styled.header`
   background-color: #f7f7f7;
   margin-top: 20px;
-`
+`;
 const WrapperFirstFooter = styled.div`
   padding: 30px 0;
   width: 100%;
@@ -16,22 +18,24 @@ const WrapperFirstFooter = styled.div`
     font-size: 25px;
     font-weight: 400;
   }
-`
+`;
 const RegisterEmail = styled.div`
   display: flex;
   input {
     padding: 7px;
-    background-color: wheat;
+    background-color: ${BackgroundProductBox};
     width: 15rem;
     border-radius: 10px 0 0 10px;
+    border: 1px solid ${SecondGreenCode};
+    border-right: none;
   }
   button {
-    background-color: #ffd408;
+    background-color: ${SecondGreenCode};
     color: white;
     padding: 0 8px;
     border-radius: 0 10px 10px 0;
   }
-`
+`;
 const FirstFooter = () => {
   return (
     <StyledFooter>
@@ -45,7 +49,7 @@ const FirstFooter = () => {
         </WrapperFirstFooter>
       </Center>
     </StyledFooter>
-  )
-}
+  );
+};
 
-export default FirstFooter
+export default FirstFooter;

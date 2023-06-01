@@ -9,14 +9,14 @@ import Router, { useRouter } from "next/router";
 import StorageUtil, { STORAGE_KEY } from "@/src/util/storage";
 import { CartContext } from "@/src/components/CartContext";
 import SecondHeader from "./SecondHeader";
-import { GreenCode } from "@/ColorCode";
+import { GreenCode, SecondGreenCode } from "@/ColorCode";
 import IconCart from "@/src/components/icon/IconCart";
 import IconSearch from "@/src/components/icon/IconSearch";
 import { navItem } from "@/src/constant";
 import BarsIcon from "@/src/components/icon/Bars";
 
 const StyledHeader = styled.header`
-  background-color: #222;
+  background-color: ${SecondGreenCode};
   position: sticky;
   top: 0;
   z-index: 10;
@@ -48,7 +48,7 @@ const StyledNav = styled.nav`
   left: 0;
   right: 0;
   padding: 70px 20px 20px;
-  background-color: #222;
+  background-color: ${SecondGreenCode};
   @media screen and (min-width: 768px) {
     display: flex;
     position: static;
@@ -57,7 +57,7 @@ const StyledNav = styled.nav`
 `;
 const NavLink = styled(Link)`
   display: block;
-  color: #aaa;
+  color: white;
   text-decoration: none;
   min-width: 30px;
   padding: 10px 0;
@@ -159,7 +159,10 @@ const FirstHeader = () => {
           <Logo href={"/"}>NÔNG SẢN ĐÀ NẴNG</Logo>
           <StyledNav mobileNavActive={mobileNavActive}>
             {navItem.map((item) => (
-              <NavLink key={item.url} href={item.url}>
+              <NavLink
+                onClick={() => setMobileNavActive((prev) => !prev)}
+                key={item.url}
+                href={item.url}>
                 {item.label}
               </NavLink>
             ))}
