@@ -7,6 +7,8 @@ import { useRouter } from "next/router";
 import React, { useState } from "react";
 import styled from "styled-components";
 
+const StyledSearch = styled.div
+``
 const StyledInput = styled.input`
   width: 100%;
   padding: 5px;
@@ -17,11 +19,6 @@ const StyledInput = styled.input`
   font-family: inherit;
 `;
 
-const SearchInput = styled.div`
-  padding: 5px 10px;
-  border-radius: 5px;
-  font-size: 1.4rem;
-`;
 const InputWrapper = styled.div`
   position: sticky;
   top: 68px;
@@ -30,7 +27,7 @@ const InputWrapper = styled.div`
 `;
 const SearchValueWrapper = styled.div`
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   gap: 10px;
   margin-top: -30px;
 `;
@@ -39,6 +36,12 @@ const ItemSearchValue = styled.div`
   padding: 10px;
   border-radius: 10px;
   font-size: 20px;
+  gap: 10px;
+  display: flex;
+  flex-direction: column;
+  img {
+    max-width: 150px;
+  }
 `;
 
 const Search = () => {
@@ -74,6 +77,7 @@ const Search = () => {
                   router.push("/product/" + data?.id);
                 }}
                 key={index}>
+                <img src={data?.rootImage} alt="" />
                 <span>{data?.ten}</span>
               </ItemSearchValue>
             ))}

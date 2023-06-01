@@ -12,6 +12,7 @@ import styled from "styled-components";
 import { useFormik } from "formik";
 import OrderAPI from "@/src/api/order";
 import * as yup from "yup";
+import { SecondGreenCode } from "@/ColorCode";
 
 const WrapperOrders = styled.div`
   padding: 20px;
@@ -51,7 +52,7 @@ const IncreaseValue = styled.span`
 `;
 const PaymentButton = styled.button`
   width: 100%;
-  background-color: orange;
+  background-color: ${SecondGreenCode};
   color: white;
   padding: 7px;
   border-radius: 10px;
@@ -218,14 +219,14 @@ const Cart = () => {
                           cartProduct.filter((id) => id === product.id).length *
                             product.giatien
                         )}
-                        đ
+                        VND
                       </td>
                     </tr>
                   ))}
                   <tr>
                     <td></td>
                     <td></td>
-                    <td>{formatPrice(total)}đ</td>
+                    <td>{formatPrice(total)}VND</td>
                   </tr>
                 </tbody>
               </Table>

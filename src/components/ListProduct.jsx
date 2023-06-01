@@ -12,7 +12,6 @@ const GridWrapper = styled.div`
   padding-top: 20px;
   padding-bottom: 20px;
   display: grid;
-  grid-template-columns: 0.4fr 1.6fr;
   @media screen and (max-width: 768px) {
     display: grid;
     grid-template-columns: 1fr;
@@ -51,7 +50,6 @@ const SortBar = styled.div`
   }
 `;
 const Border = styled.div`
-  border-left: 1px solid gray;
   @media screen and (max-width: 768px) {
     border: none;
   }
@@ -77,18 +75,8 @@ const ListProduct = (products) => {
   };
   return (
     <GridWrapper>
-      <RecommendWrapper>
-        <Recommend />
-      </RecommendWrapper>
       <Border>
         <Center>
-          <SortBar>
-            Sắp xếp :<span>Tên A &rarr; Z</span>
-            <span>Tên Z &rarr; A</span>
-            <span>Giá tăng dần</span>
-            <span>Giá giảm dần</span>
-            <span>Hàng mới</span>
-          </SortBar>
           <ProductGrid>
             {listProduct?.length > 0 &&
               listProduct.map((product, index) => (

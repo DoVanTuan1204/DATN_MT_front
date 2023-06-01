@@ -1,11 +1,11 @@
-import { GreenCode } from "@/ColorCode";
+import { GreenCode, SecondGreenCode } from "@/ColorCode";
 import Center from "@/src/components/Center";
 import React from "react";
 import styled from "styled-components";
 
 const StyledFooter = styled.div`
-  background-color: white;
-  color: black;
+  background-color: ${SecondGreenCode};
+  color: white;
 `;
 const GridWrapper = styled.div`
   padding: 40px 0;

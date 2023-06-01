@@ -2,7 +2,7 @@ import React from "react";
 import MainLayout from "@/src/layout/MainLayout";
 import Center from "@/src/components/Center";
 import styled from "styled-components";
-import { GreenCode } from "@/ColorCode";
+import { GreenCode, SecondGreenCode } from "@/ColorCode";
 import NewProduct from "@/src/components/ListProduct";
 
 const BgImage = styled.div`
@@ -13,7 +13,7 @@ const BgImage = styled.div`
   background-size: 100% 100%;
 
   div {
-    color: white;
+    color: ${GreenCode};
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -44,7 +44,7 @@ const BestSeller = styled.div`
   span {
     margin-top: 50px;
     font-size: 24px;
-    border-bottom: 1px solid ${GreenCode};
+    border-bottom: 1px solid ${SecondGreenCode};
     padding: 10px;
   }
 `;
@@ -52,7 +52,7 @@ const Logo = styled.span`
   text-decoration: none;
   font-size: 20px;
   font-weight: 500;
-  border-bottom: 1px solid ${GreenCode};
+  border-bottom: 1px solid ${SecondGreenCode};
   padding: 10px;
 `;
 
@@ -89,10 +89,13 @@ const HomePage = () => {
         }}>
         <div>
           <span className=" font-semibold">Khuyến mãi đặc biệt</span>
-          <span className=" font-semibold text-[50px]">Sản phẩm tốt nhất</span>
-          <span className=" font-semibold text-[50px]">Giá cả tốt nhất</span>
+          <span className="text-[30px] font-semibold lg:text-[50px]">
+            Sản phẩm tốt nhất
+          </span>
+          <span className="text-[30px] font-semibold lg:text-[50px]">
+            Giá cả tốt nhất
+          </span>
           <span className=" font-semibold">Mua sắm ngay cùng chúng tôi</span>
-          <span>Special offer</span>
         </div>
       </BgImage>
       <Center>
